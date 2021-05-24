@@ -118,7 +118,7 @@ class SourceCovidDataset(Source):
         stream_name = "covid"  # Example
 
         # Not Implemented
-        response = requests.get("https://raw.githubusercontent.com/wcota/covid19br/master/cases-brazil-states.csv")
+        response = requests.get("https://raw.githubusercontent.com/wcota/covid19br/master/cases-brazil-total.csv")
 
         data = {"data": response.content}  # Example
 
