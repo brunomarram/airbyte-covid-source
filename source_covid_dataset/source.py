@@ -80,7 +80,7 @@ class SourceCovidDataset(Source):
         """
         streams = []
 
-        stream_name = "TableName"  # Example
+        stream_name = "covid"  # Example
         json_schema = {  # Example
             "$schema": "http://json-schema.org/draft-07/schema#",
             "type": "object",
