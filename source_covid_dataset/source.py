@@ -119,10 +119,15 @@ class SourceCovidDataset(Source):
 
         # Not Implemented
         response = requests.get("https://raw.githubusercontent.com/wcota/covid19br/master/cases-brazil-total.csv")
+        
+        decoded = response.content.decode("utf-8")
+        rows = decoded.split(sep="\n")
+        rows.pop()
 
-        data = {"data": response.content}  # Example
+        for row in rows:
+            data = {"data": row}  # Example
 
-        yield AirbyteMessage(
-            type=Type.RECORD,
-            record=AirbyteRecordMessage(stream=stream_name, data=data, emitted_at=int(datetime.now().timestamp()) * 1000),
-        )
+            yield AirbyteMessage(
+                type=Type.RECORD,
+                record=AirbyteRecordMessage(stream=stream_name, data=data, emitted_at=int(datetime.now().timestamp()) * 1000),
+            )
